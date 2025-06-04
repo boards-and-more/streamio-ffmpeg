@@ -28,7 +28,7 @@ module FFMPEG
       @path = path
 
       # ffmpeg will output to stderr
-      command = [FFMPEG.ffprobe_binary, '-i', path, *%w(-print_format json -show_format -show_streams -show_error)]
+      command = [FFMPEG.ffprobe_binary, '-protocol_whitelist', 'file,http,https,tcp,tls', '-i', path, *%w(-print_format json -show_format -show_streams -show_error)]
       std_output = ''
       std_error = ''
 
